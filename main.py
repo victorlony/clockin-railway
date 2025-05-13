@@ -4,6 +4,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return "✅ 104 自動打卡服務運作中"
+
 @app.route("/clockin", methods=["GET"])
 def clockin():
     try:
@@ -38,6 +42,6 @@ def clockin():
     except Exception as e:
         return f"⚠️ 發生錯誤：{e}"
 
-@app.route("/", methods=["GET"])
-def home():
-    return "✅ 104 自動打卡服務運作中"
+# ✅ 加上這段！很重要！
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
