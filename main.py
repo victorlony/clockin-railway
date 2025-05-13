@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     return "✅ 104 自動打卡服務運作中"
 
-@app.route("/clockin", methods=["GET"])
+@app.route("/clockin", methods=["GET", "POST"])
 def clockin():
     try:
         cookie = os.getenv("COOKIES")
